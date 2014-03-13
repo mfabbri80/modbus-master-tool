@@ -38,4 +38,12 @@ public class Utils {
 		res[1] = (byte) shortValue;
 		return res;
 	}
+	
+	public static byte[] toBinaryArray(int value) {
+		byte[] res = new byte[16];
+		for (short i = 0; i < 16; i++) {
+			res[i] = (byte)(((value & (1 << i)) != 0) ? 1 : 0);
+		}
+		return res;
+	}
 }

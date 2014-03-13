@@ -19,11 +19,19 @@ package cpalaf.ilvata.ma.UI;
 
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,12 +46,6 @@ import javax.swing.event.ChangeListener;
 import cpalaf.ilvata.ma.Logic.Modbus;
 import cpalaf.ilvata.ma.Logic.Utils;
 
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
-
 public class MainWindow {
 
 	private JFrame frmModbusGui;
@@ -51,6 +53,8 @@ public class MainWindow {
 	private JTextField slavePort;
 	private JTextField registerText;
 	private JTextField valueText;
+	private JPanel bitPanel;
+	private JCheckBox bitmask;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private int selectedUnit;
 
@@ -83,9 +87,8 @@ public class MainWindow {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frmModbusGui = new JFrame();
-		frmModbusGui.setResizable(false);
 		frmModbusGui.setTitle("Modbus GUI");
-		frmModbusGui.setBounds(100, 100, 414, 234);
+		frmModbusGui.setBounds(100, 100, 425, 318);
 		frmModbusGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmModbusGui.getContentPane().setLayout(null);
 		frmModbusGui.setLocationRelativeTo(null);
@@ -112,7 +115,7 @@ public class MainWindow {
 		frmModbusGui.getContentPane().add(lblSlavePort);
 		
 		final JTextArea logArea = new JTextArea();
-		logArea.setBounds(10, 123, 388, 75);
+		logArea.setBounds(0, 200, 409, 75);
 		frmModbusGui.getContentPane().add(logArea);
 		
 		JLabel lblRegister = new JLabel("Register");
@@ -141,7 +144,7 @@ public class MainWindow {
 		FlowLayout fl_writePanel = (FlowLayout) writePanel.getLayout();
 		fl_writePanel.setAlignment(FlowLayout.LEFT);
 		writePanel.setBorder(null);
-		writePanel.setBounds(10, 79, 178, 31);
+		writePanel.setBounds(10, 82, 241, 30);
 		frmModbusGui.getContentPane().add(writePanel);
 		writePanel.setVisible(false);
 		
@@ -159,7 +162,144 @@ public class MainWindow {
 		JLabel lblValue = new JLabel("Value");
 		writePanel.add(lblValue);
 		
+		final JCheckBox bit0 = new JCheckBox("0");
+		bit0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit1 = new JCheckBox("1");
+		bit1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit2 = new JCheckBox("2");
+		bit2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit3 = new JCheckBox("3");
+		bit3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit4 = new JCheckBox("4");
+		bit4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit5 = new JCheckBox("5");
+		bit5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit6 = new JCheckBox("6");
+		bit6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit7 = new JCheckBox("7");
+		bit7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit8 = new JCheckBox("8");
+		bit8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit9 = new JCheckBox("9");
+		bit9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit10 = new JCheckBox("10");
+		bit10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit11 = new JCheckBox("11");
+		bit11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit12 = new JCheckBox("12");
+		bit12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit13 = new JCheckBox("13");
+		bit13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit14 = new JCheckBox("14");
+		bit14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
+		final JCheckBox bit15 = new JCheckBox("15");
+		bit15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setValueText((JCheckBox)arg0.getSource(), valueText);
+			}
+		});
+
 		valueText = new JTextField();
+		valueText.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				if (!valueText.getText().isEmpty()) {
+					byte[] convBin = Utils.toBinaryArray(Integer.parseInt(valueText.getText()));
+					bit0.setSelected((convBin[0] == 1) ? true :  false);
+					bit1.setSelected((convBin[1] == 1) ? true :  false);
+					bit2.setSelected((convBin[2] == 1) ? true :  false);
+					bit3.setSelected((convBin[3] == 1) ? true :  false);
+					bit4.setSelected((convBin[4] == 1) ? true :  false);
+					bit5.setSelected((convBin[5] == 1) ? true :  false);
+					bit6.setSelected((convBin[6] == 1) ? true :  false);
+					bit7.setSelected((convBin[7] == 1) ? true :  false);
+					bit8.setSelected((convBin[8] == 1) ? true :  false);
+					bit9.setSelected((convBin[9] == 1) ? true :  false);
+					bit10.setSelected((convBin[10] == 1) ? true :  false);
+					bit11.setSelected((convBin[11] == 1) ? true :  false);
+					bit12.setSelected((convBin[12] == 1) ? true :  false);
+					bit13.setSelected((convBin[13] == 1) ? true :  false);
+					bit14.setSelected((convBin[14] == 1) ? true :  false);
+					bit15.setSelected((convBin[15] == 1) ? true :  false);
+				}
+			}
+		});
+		valueText.setText("0");
 		valueText.setHorizontalAlignment(SwingConstants.CENTER);
 		valueText.setColumns(10);
 		valueText.addActionListener(new ActionListener() {
@@ -168,6 +308,21 @@ public class MainWindow {
 			}
 		});
 		writePanel.add(valueText);
+			
+		bitPanel = new JPanel();
+		bitPanel.setVisible(false);
+		bitPanel.setBounds(10, 123, 388, 66);
+		frmModbusGui.getContentPane().add(bitPanel);
+		bitPanel.setLayout(new GridLayout(2, 9, 0, 0));
+		
+		bitmask = new JCheckBox("Bit mask");
+		bitmask.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				JCheckBox source = (JCheckBox) arg0.getSource();
+				bitPanel.setVisible(source.isSelected());
+			}
+		});
+		writePanel.add(bitmask);
 		
 		JButton sendCommandBT = new JButton("Send command");
 		sendCommandBT.addActionListener(new ActionListener() {
@@ -175,7 +330,7 @@ public class MainWindow {
 				performAction(buttonGroup, logArea);
 			}
 		});
-		sendCommandBT.setBounds(259, 87, 137, 23);
+		sendCommandBT.setBounds(259, 89, 137, 23);
 		frmModbusGui.getContentPane().add(sendCommandBT);
 		
 		final JComboBox unitIDSelector = new JComboBox();
@@ -194,10 +349,40 @@ public class MainWindow {
 		JLabel lblUnitId = new JLabel("Unit ID");
 		lblUnitId.setBounds(295, 54, 46, 14);
 		frmModbusGui.getContentPane().add(lblUnitId);
+		
+		
+		bitPanel.add(bit0);
+		bitPanel.add(bit1);
+		bitPanel.add(bit2);
+		bitPanel.add(bit3);
+		bitPanel.add(bit4);
+		bitPanel.add(bit5);
+		bitPanel.add(bit6);
+		bitPanel.add(bit7);
+		bitPanel.add(bit8);
+		bitPanel.add(bit9);
+		bitPanel.add(bit10);
+		bitPanel.add(bit11);
+		bitPanel.add(bit12);
+		bitPanel.add(bit13);
+		bitPanel.add(bit14);
+		bitPanel.add(bit15);
 	}
 	
+	private void setValueText(JCheckBox source, JTextField valueText2) {
+			int pos = Integer.parseInt(source.getText());
+			int startValue = Integer.parseInt(valueText2.getText());
+			if (source.isSelected()) {
+				startValue += 1 << pos;
+			} else {
+				startValue -= 1 << pos;
+			}
+			valueText2.setText(String.valueOf(startValue));
+	}
+
 	private void setWritePanelVisible(JPanel panel, JRadioButton bt) {
 		panel.setVisible(bt.isSelected());
+		bitPanel.setVisible(bt.isSelected() && bitmask.isSelected());
 	}
 	
 	/**
